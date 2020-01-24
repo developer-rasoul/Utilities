@@ -1,0 +1,44 @@
+@model BookShop.ViewModels.TranslatorsCreateViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+    <div class="card">
+        <div class="card-header bg-light">
+            ایجاد نقش
+        </div>
+        <div class="card-body">
+            @if (ViewBag.Error!=null)
+            {
+                <div class="alert alert-danger alert-dismissible">
+                    @ViewBag.Error
+                    <button class="close" data-dismiss="alert" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+            <form asp-action="AddRole" method="post">
+                <div class="col-md-12 row">
+                    <div class="form-group col-md-6 row">
+                        <div class="col-md-3 pl-0">
+                            <label>
+                                نام نقش
+                            </label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" asp-for="RoleName" />
+                            <span asp-validation-for="RoleName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="submit" class="btn btn-primary float-md-none float-left" value="افزودن نقش" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <a asp-action="Index" class="m-4"><i class="fa fa-arrow-alt-circle-right"> بازگشت </i></a>
+    </div>
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }

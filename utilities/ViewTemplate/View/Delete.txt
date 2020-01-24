@@ -1,0 +1,27 @@
+@model BookShop.ViewModel.RolesViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-light">
+                حذف نقش‌ <b>@Model.RoleName</b>
+            </div>
+            <div class="card-body">
+                <p class="">
+                    از حذف نقش  <b class="text-primary">@Model.RoleName</b> مطمئن هستید؟
+                </p>
+            </div>
+            <div class="card-footer bg-light clearfix text-right">
+
+                <form method="post" asp-action="DeleteRole">
+                    <input type="submit" class="btn btn-danger float-left mr-2" value="بله" />
+                    <a asp-action="Index" class="btn btn-info float-left">خیر</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

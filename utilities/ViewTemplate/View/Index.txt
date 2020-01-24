@@ -1,0 +1,117 @@
+@model IEnumerable<BookShop.Models.Translator>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-md-12"> @if (TempData["success"] != null)
+        {
+            <div class="alert alert-success alert-dismissible">
+                @TempData["Success"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible">
+                @TempData["error"]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        <div class="card">
+            <div class="card-header bg-light">
+                لیست مترجمان
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <p class="col-md-4 ">
+                        <a asp-action="Create" class="btn btn-primary btn-rounded btn-block">
+                            <i class="fa mx-2 fa-user-plus"></i>افزودن مترجم جدید
+                        </a>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>نام و نام خانوادگی</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.FirstName @item.LastName</td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.TranslatorID" class="btn btn-info btn-icon btn-rounded">
+                                            ویرایش
+                                        </a>
+                                        <a asp-route-id="@item.TranslatorID" asp-action="Delete" class="btn btn-danger btn-icon btn-rounded">
+                                            حذف
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+=============================================================
+Index With Paging ReflectiioniT
+=============================================================
+@model ReflectionIT.Mvc.Paging.PagingList<BookShop.ViewModel.RolesViewModel>
+@using ReflectionIT.Mvc.Paging
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-light">
+                لیست نقش‌ها
+            </div>
+
+            <div class="card-body">
+                <form method="post">
+                    <p class="col-md-4 ">
+                        <a asp-action="AddRole" class="btn btn-primary">
+                            <i class="fa mx-2 fa-plus-square"></i>افزودن نقش جدید
+                        </a>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>@Html.SortableHeaderFor(a=>a.RoleName)</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.RoleName</td>
+                                    
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.RoleID" class="btn btn-info btn-icon">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </a>
+                                        <a asp-route-id="@item.RoleID" asp-action="Delete" class="btn btn-danger btn-icon">
+                                            <i class="fa fa-trash-alt"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

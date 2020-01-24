@@ -1,0 +1,29 @@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-light">
+                ایجاد ناشر جدید
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="row  form-group">
+                        <div class="row col-md-6">
+                            <div class="col-md-3">
+                                <label asp-for="Publisher.Name"></label>
+                            </div>
+                            <div class="col-md-9">
+                                <input typet="text" asp-for="Publisher.Name" class="form-control" />
+                                <span asp-validation-for="Publisher.Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="submit" class="btn btn-success" value="ایجاد ناشر" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <a asp-page="./Index" class="text-danger   m-4"><i class="fa fa-arrow-alt-circle-right"> بازگشت </i></a>
+        </div>
+    </div>
+</div>

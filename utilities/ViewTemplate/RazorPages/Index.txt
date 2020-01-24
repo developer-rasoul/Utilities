@@ -1,0 +1,43 @@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-light">
+                لیست ناشرین
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <p class="col-md-4 ">
+                        <a asp-page="./Create" class="btn btn-primary btn-rounded btn-block">
+                            <i class="fa mx-2 fa-user-plus"></i>افزودن ناشر جدید 
+                        </a>
+                    </p>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>نام ناشر</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Publishers)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>
+                                        <a asp-page="./Edit" asp-route-id="@item.PublisherID" class="btn btn-info btn-icon btn-rounded">
+                                            <i class="fa fa-pencil-alt"></i>
+                                        </a>
+                                        <button type="submit" asp-route-id="@item.PublisherID" asp-page-handler="Delete" class="btn btn-danger btn-icon btn-rounded">
+                                            <i class="fa fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
